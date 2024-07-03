@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ candidate.name }} {{ candidate.last_name }}</h2>
+  <p><strong>Образование:</strong> {{ candidate.education }}</p>
+  <p><strong>Опыт работы:</strong> {{ candidate.experience }}</p>
+  <p><strong>Адрес:</strong> {{ candidate.address }}</p>
+  <p><strong>Номер телефона:</strong> {{ candidate.phone_number }}</p>
+  <p>
+    {% if candidate.photo %}
+    <img class="row_image" src="{{ candidate.imageUrl }}" width=250>
+    {% endif %}
+  </p>
+
+  <h3>Данные о заявке кандидата </h3>
+  <ul>
+    {% for application in applications %}
+      <li>
+        <p><strong>Позиция:</strong> {{ application.get_position_display }}</p>
+        <p><strong>Дата подачи:</strong> {{ application.date_submitted }}</p>
+        <p><strong>Резюме:</strong> <a href="{{ application.resume.url }}">Скачать</a></p>
+        <p><strong>Портфолио:</strong> <a href="{{ application.portfolio_link }}" target="_blank">Ссылка</a></p>
+        <p><strong>Гитхаб:</strong> <a href="{{ application.github_profile }}" target="_blank">Ссылка</a></p>
+        <p><strong>Сопроводительное письмо:</strong> {{ application.cover_letter }}</p>
+        <p><strong>Комментарии:</strong> {{ application.comments }}</p>
+        <p><strong>Дата собеседования:</strong> {{ application.interview_date }}</p>
+        <p><strong>Фидбэк:</strong> {{ application.feedback }}</p>
+        <p><strong>Рейтинг:</strong> {{ application.rating }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

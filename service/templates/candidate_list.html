@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Список кандидатов</h2>
+  <ul>
+    {% for candidate in candidates %}
+      <li>
+        <a href="{% url 'candidate_detail' candidate.id %}">
+          {{ candidate.name }} {{ candidate.last_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+
+

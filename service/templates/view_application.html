@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}View Application{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Application Details</h2>
+    <p><strong>Candidate:</strong> {{ application.candidate.user.name }}</p>
+    <p><strong>Position:</strong> {{ application.position }}</p>
+    <p><strong>Cover Letter:</strong> {{ application.cover_letter }}</p>
+    <p><strong>Resume:</strong> <a href="{{ application.resume.url }}">Download</a></p>
+
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p><strong>{{ comment.author.name }}:</strong> {{ comment.text }}</p>
+                <p><small>{{ comment.created_at }}</small></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Add a Comment</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </form>
+</div>
+{% endblock %}

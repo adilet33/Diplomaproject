@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Регистрация</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Имя пользователя:</label>
+                            {{ user_form.name }}
+                            {% if user_form.name.errors %}
+                                <small class="text-danger">{{ user_form.name.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            {{ user_form.email }}
+                            {% if user_form.email.errors %}
+                                <small class="text-danger">{{ user_form.email.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Пароль:</label>
+                            {{ user_form.password1 }}
+                            {% if user_form.password1.errors %}
+                                <small class="text-danger">{{ user_form.password1.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Подтверждение пароля:</label>
+                            {{ user_form.password2 }}
+                            {% if user_form.password2.errors %}
+                                <small class="text-danger">{{ user_form.password2.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">Имя:</label>
+                            {{ profile_form.name }}
+                            {% if profile_form.name.errors %}
+                                <small class="text-danger">{{ profile_form.name.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Фамилия:</label>
+                            {{ profile_form.last_name }}
+                            {% if profile_form.last_name.errors %}
+                                <small class="text-danger">{{ profile_form.last_name.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Образование:</label>
+                            {{ profile_form.education }}
+                            {% if profile_form.education.errors %}
+                                <small class="text-danger">{{ profile_form.education.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Опыт работы:</label>
+                            {{ profile_form.experience }}
+                            {% if profile_form.experience.errors %}
+                                <small class="text-danger">{{ profile_form.experience.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Номер телефона:</label>
+                            {{ profile_form.phone_number }}
+                            {% if profile_form.phone_number.errors %}
+                                <small class="text-danger">{{ profile_form.phone_number.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Адрес:</label>
+                            {{ profile_form.address }}
+                            {% if profile_form.address.errors %}
+                                <small class="text-danger">{{ profile_form.address.errors }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Фото профиля:</label>
+                            {{ profile_form.photo }}
+                          
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
